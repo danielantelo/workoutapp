@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/workoutapp/static/js/app.0abf0f41.chunk.js",
-    "app.js.map": "/workoutapp/static/js/app.0abf0f41.chunk.js.map",
+    "app.js": "/workoutapp/static/js/app.0e3add6f.chunk.js",
+    "app.js.map": "/workoutapp/static/js/app.0e3add6f.chunk.js.map",
     "runtime~app.js": "/workoutapp/static/js/runtime~app.e8880c0d.js",
     "runtime~app.js.map": "/workoutapp/static/js/runtime~app.e8880c0d.js.map",
-    "static/js/2.631b22dd.chunk.js": "/workoutapp/static/js/2.631b22dd.chunk.js",
-    "static/js/2.631b22dd.chunk.js.map": "/workoutapp/static/js/2.631b22dd.chunk.js.map",
+    "static/js/2.1856c2d9.chunk.js": "/workoutapp/static/js/2.1856c2d9.chunk.js",
+    "static/js/2.1856c2d9.chunk.js.map": "/workoutapp/static/js/2.1856c2d9.chunk.js.map",
     "fonts/AntDesign.ttf": "/workoutapp/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/workoutapp/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/workoutapp/./fonts/Feather.ttf",
@@ -24,7 +24,7 @@
     "index.html": "/workoutapp/index.html",
     "manifest.json": "/workoutapp/manifest.json",
     "serve.json": "/workoutapp/serve.json",
-    "static/js/2.631b22dd.chunk.js.LICENSE.txt": "/workoutapp/static/js/2.631b22dd.chunk.js.LICENSE.txt",
+    "static/js/2.1856c2d9.chunk.js.LICENSE.txt": "/workoutapp/static/js/2.1856c2d9.chunk.js.LICENSE.txt",
     "static/media/Female10.png": "/workoutapp/static/media/Female10.0c2955e8.png",
     "static/media/Female15.png": "/workoutapp/static/media/Female15.6d965ec9.png",
     "static/media/Female20.png": "/workoutapp/static/media/Female20.14ba5dd7.png",
@@ -35,13 +35,19 @@
     "static/media/Male20.png": "/workoutapp/static/media/Male20.4ad2a421.png",
     "static/media/Male25.png": "/workoutapp/static/media/Male25.a2cbf1de.png",
     "static/media/Male30.png": "/workoutapp/static/media/Male30.c81ae86e.png",
+    "static/media/cardio-icon.png": "/workoutapp/static/media/cardio-icon.96b53289.png",
+    "static/media/comic1.png": "/workoutapp/static/media/comic1.96e63579.png",
+    "static/media/comic2.png": "/workoutapp/static/media/comic2.70b29362.png",
+    "static/media/comic3.jpeg": "/workoutapp/static/media/comic3.6d65de32.jpeg",
     "static/media/go.png": "/workoutapp/static/media/go.077d9926.png",
     "static/media/logo.png": "/workoutapp/static/media/logo.19683717.png",
+    "static/media/speed-icon.png": "/workoutapp/static/media/speed-icon.6097ad38.png",
+    "static/media/strength-icon.png": "/workoutapp/static/media/strength-icon.23b12a84.png",
     "static/media/welcome2.png": "/workoutapp/static/media/welcome2.bd841836.png"
   },
   "entrypoints": [
     "static/js/runtime~app.e8880c0d.js",
-    "static/js/2.631b22dd.chunk.js",
-    "static/js/app.0abf0f41.chunk.js"
+    "static/js/2.1856c2d9.chunk.js",
+    "static/js/app.0e3add6f.chunk.js"
   ]
 }
