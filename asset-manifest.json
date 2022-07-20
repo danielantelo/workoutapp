@@ -1,11 +1,11 @@
 {
   "files": {
-    "app.js": "/workoutapp/static/js/app.d0d61211.chunk.js",
-    "app.js.map": "/workoutapp/static/js/app.d0d61211.chunk.js.map",
+    "app.js": "/workoutapp/static/js/app.133e6623.chunk.js",
+    "app.js.map": "/workoutapp/static/js/app.133e6623.chunk.js.map",
     "runtime~app.js": "/workoutapp/static/js/runtime~app.e8880c0d.js",
     "runtime~app.js.map": "/workoutapp/static/js/runtime~app.e8880c0d.js.map",
-    "static/js/2.1856c2d9.chunk.js": "/workoutapp/static/js/2.1856c2d9.chunk.js",
-    "static/js/2.1856c2d9.chunk.js.map": "/workoutapp/static/js/2.1856c2d9.chunk.js.map",
+    "static/js/2.99bac2a9.chunk.js": "/workoutapp/static/js/2.99bac2a9.chunk.js",
+    "static/js/2.99bac2a9.chunk.js.map": "/workoutapp/static/js/2.99bac2a9.chunk.js.map",
     "fonts/AntDesign.ttf": "/workoutapp/./fonts/AntDesign.ttf",
     "fonts/Entypo.ttf": "/workoutapp/./fonts/Entypo.ttf",
     "fonts/Feather.ttf": "/workoutapp/./fonts/Feather.ttf",
@@ -24,7 +24,7 @@
     "index.html": "/workoutapp/index.html",
     "manifest.json": "/workoutapp/manifest.json",
     "serve.json": "/workoutapp/serve.json",
-    "static/js/2.1856c2d9.chunk.js.LICENSE.txt": "/workoutapp/static/js/2.1856c2d9.chunk.js.LICENSE.txt",
+    "static/js/2.99bac2a9.chunk.js.LICENSE.txt": "/workoutapp/static/js/2.99bac2a9.chunk.js.LICENSE.txt",
     "static/media/Female10.png": "/workoutapp/static/media/Female10.0c2955e8.png",
     "static/media/Female15.png": "/workoutapp/static/media/Female15.6d965ec9.png",
     "static/media/Female20.png": "/workoutapp/static/media/Female20.14ba5dd7.png",
@@ -47,7 +47,7 @@
   },
   "entrypoints": [
     "static/js/runtime~app.e8880c0d.js",
-    "static/js/2.1856c2d9.chunk.js",
-    "static/js/app.d0d61211.chunk.js"
+    "static/js/2.99bac2a9.chunk.js",
+    "static/js/app.133e6623.chunk.js"
   ]
 }
