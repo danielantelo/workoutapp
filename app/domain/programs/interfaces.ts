@@ -13,6 +13,7 @@ export interface RoutineSet {
   ratio?: number;
   status?: 'pending' | 'done';
   basis?: keyof LiftMetrics;
+  ignoreForTracking?: boolean;
 }
 export interface RoutineEntry {
   exercise: Exercise | Exercise[];
@@ -41,7 +42,7 @@ export interface Program {
   gender: Gender[];
   goal: Goal[];
   daysPerWeek: number;
-  weeklySchedule: [0, 2, 4];
+  weeklySchedule: number[];
   workoutDuration: number;
   duration: number;
   video?: string;

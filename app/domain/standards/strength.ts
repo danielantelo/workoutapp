@@ -245,7 +245,7 @@ export const getStrengthLevel = (gender: Gender, everLifted: boolean, strengthSt
 
 export const calculateStrengthStandards = (weight: number, lifts: Lifts): StrengthMetrics =>
   standardExercises.reduce((acc, key: string) => {
-    const lift = lifts[key as keyof Lifts];
+    const lift = lifts?.[key as keyof Lifts];
     if (!lift) return acc;
 
     const repMaxes = calculateRepMaxes(lift.weight, lift.reps);

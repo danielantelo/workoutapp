@@ -124,7 +124,7 @@ export const getRecommendedWeight =
 const getBestAttemptFromSets = (sets: RoutineSet[]): LiftAttempt =>
   sets.reduce(
     (acc, set) => {
-      if (!set.weight && !set.reps) return acc;
+      if ((!set.weight && !set.reps) || set.ignoreForTracking) return acc;
 
       if (set.weight && set.weight >= acc.weight) {
         acc.weight = Number(set.weight);
@@ -150,9 +150,10 @@ export const updateCurrentLifts = (
       if (curr.ignoreForTracking) return acc;
 
       const { weight, reps, targetReps } = getBestAttemptFromSets(curr.sets);
+      if (weight === 0 && reps === 0 && targetReps === 0) return acc;
+
       const currentFails = currentLifts[curr.exercise as keyof typeof currentLifts]?.fails ?? 0;
       const isFail = targetReps && reps < targetReps;
-
       return { ...acc, [curr.exercise as string]: { weight, reps, targetReps, fails: isFail ? currentFails + 1 : 0 } };
     }, {}),
   });
