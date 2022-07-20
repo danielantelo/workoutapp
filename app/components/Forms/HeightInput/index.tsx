@@ -1,6 +1,6 @@
 import { HStack, Input, Text } from 'native-base';
 import { useEffect, useState } from 'react';
-import { UnitsType, feetToInches, inchesToFeet } from 'fitness-tools';
+import { UnitsType, feetAndInchesToInches, inchestToFeetAndInches } from 'fitness-tools';
 
 export const HeightInput = ({
   height,
@@ -34,16 +34,14 @@ export const ImperialHeightInput = ({ height, setHeight }: { height: number; set
 
   const onSetHeight = () => {
     if (feet && inches) {
-      const heightInInches = feetToInches(feet) + inches;
+      const heightInInches = feetAndInchesToInches(feet, inches);
       setHeight(heightInInches);
     }
   };
 
   useEffect(() => {
     if (height) {
-      const converted = inchesToFeet(height);
-      const feet = Math.floor(converted);
-      const inches = Math.round(feetToInches(converted - feet));
+      const [feet, inches] = inchestToFeetAndInches(height);
       setFeet(feet);
       setInches(inches);
     }
@@ -59,7 +57,7 @@ export const ImperialHeightInput = ({ height, setHeight }: { height: number; set
         textAlign={'right'}
         width={50}
         keyboardType={'number-pad'}
-        value={feet?.toString()}
+        value={feet?.toString() || ''}
         marginX={1}
         onChangeText={(value: string) => {
           setFeet(Number(value));
@@ -70,7 +68,7 @@ export const ImperialHeightInput = ({ height, setHeight }: { height: number; set
         textAlign={'right'}
         width={50}
         keyboardType={'number-pad'}
-        value={inches?.toString()}
+        value={inches?.toString() || ''}
         marginX={1}
         onChangeText={(value: string) => {
           setInches(Number(value));

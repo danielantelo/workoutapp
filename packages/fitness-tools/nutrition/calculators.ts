@@ -8,34 +8,40 @@ interface BmrArgs {
   bodyFat?: number;
 }
 
-const bmrFormulas: { [key: string]: (args: BmrArgs) => number } = {
-  miffinStJeor: ({ gender, weightInLbs, heightInInches, age }: BmrArgs) => {
+export enum BmrFormula {
+  MiffinStJeor = 'MiffinStJeor',
+  HarrisBenedict = 'HarrisBenedict',
+  KatchMcArdle = 'KatchMcArdle',
+}
+
+const bmrFormulas: { [key in BmrFormula]: (args: BmrArgs) => number } = {
+  [BmrFormula.MiffinStJeor]: ({ gender, weightInLbs, heightInInches, age }: BmrArgs) => {
     if (gender === Gender.Female) {
       return 10 * (weightInLbs / 2.2) + 6.25 * (heightInInches * 2.54) - 5 * age - 161;
     }
 
     return 10 * (weightInLbs / 2.2) + 6.25 * (heightInInches * 2.54) - 5 * age + 5;
   },
-  harrisBenedict: ({ gender, weightInLbs, heightInInches, age }: BmrArgs) => {
+  [BmrFormula.HarrisBenedict]: ({ gender, weightInLbs, heightInInches, age }: BmrArgs) => {
     if (gender === Gender.Female) {
       return 655.1 + 4.35 * weightInLbs + 4.7 * heightInInches - 4.7 * age;
     }
 
     return 66.47 + 6.24 * weightInLbs + 12.7 * heightInInches - 6.755 * age;
   },
-  katchMcArdle: ({ bodyFat = 20, weightInLbs }: BmrArgs) => {
+  [BmrFormula.KatchMcArdle]: ({ bodyFat = 20, weightInLbs }: BmrArgs) => {
     const leanMass = ((weightInLbs / 2.2) * (100 - bodyFat)) / 100;
     return 370 + 21.6 * leanMass;
   },
 };
 
-export const calculateBMR = (args: BmrArgs, formula?: keyof typeof bmrFormulas): number => {
+export const calculateBMR = (args: BmrArgs, formula?: BmrFormula): number => {
   if (formula) {
     return Math.round(bmrFormulas[formula](args));
   }
 
-  const acc = Object.keys(bmrFormulas).reduce((acc, current) => {
-    return acc + bmrFormulas[current](args);
+  const acc = Object.keys(bmrFormulas).reduce<number>((acc, current) => {
+    return acc + bmrFormulas[current as unknown as keyof typeof bmrFormulas](args);
   }, 0);
 
   return Math.round(acc / Object.keys(bmrFormulas).length);
@@ -61,10 +67,10 @@ export const calculateTDEE = (activityLevel: ActivityLevel, bmr: number): number
   return Math.floor(tdee / 10) * 10;
 };
 
-export const calculateMinimumProteinRequirement = (bodyWeightInLbs: number, bodyFat?: number): number => {
+export const calculateMinimumProteinRequirement = (bodyWeightInLbs: number, bodyFat?: number, roundToNearest = 1): number => {
   let grams = bodyWeightInLbs;
-  if (bodyFat) grams = bodyWeightInLbs * (bodyFat / 100);
-  return Math.round(grams / 5) * 5;
+  if (bodyFat) grams = bodyWeightInLbs - bodyWeightInLbs * (bodyFat / 100);
+  return Math.round(grams / roundToNearest) * roundToNearest;
 };
 
 export const calculateBMI = (weightInLbs: number, heightInInches: number) => {

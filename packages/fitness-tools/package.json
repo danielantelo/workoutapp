@@ -2,12 +2,14 @@
   "name": "fitness-tools",
   "version": "0.1.0",
   "packageManager": "yarn@3.2.1",
+  "main": "dist/index.js",
   "engines": {
     "node": "^16",
     "npm": "please-use-yarn",
     "yarn": ">=3.2"
   },
   "scripts": {
+    "build": "tsc",
     "lint": "eslint --ext .ts . ; npx madge --circular --extensions ts,tsx,js ./",
     "typecheck": "tsc --noemit",
     "test": "jest"
