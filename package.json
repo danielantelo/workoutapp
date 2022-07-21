@@ -1,23 +1,61 @@
 {
-  "name": "root",
+  "name": "workoutapp",
+  "version": "1.0.0",
+  "main": "node_modules/expo/AppEntry.js",
+  "homepage": "http://danielantelo.github.io/workoutapp/",
   "packageManager": "yarn@3.2.1",
-  "workspaces": [
-    "app/",
-    "packages/*"
-  ],
   "engines": {
     "node": "^16",
     "npm": "please-use-yarn",
     "yarn": ">=3.2"
   },
   "scripts": {
-    "start": "yarn workspace workoutapp start",
-    "deploy-web": "yarn workspace workoutapp deploy-web",
-    "lint": "yarn workspace fitness-tools lint ; yarn workspace workoutapp lint",
-    "typecheck": "yarn workspace fitness-tools typecheck ; yarn workspace workoutapp typecheck",
-    "test": "yarn workspace fitness-tools test ; yarn workspace workoutapp test"
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "eject": "expo eject",
+    "lint": "eslint --ext .js,.tsx,.ts . ; npx madge --circular --extensions ts,tsx,js ./",
+    "typecheck": "tsc --noemit",
+    "test": "jest",
+    "deploy-web": "expo build:web && gh-pages -d web-build"
+  },
+  "dependencies": {
+    "expo": "^45.0.5",
+    "expo-av": "^11.2.3",
+    "gh-pages": "^4.0.0",
+    "i18next": "^21.8.14",
+    "lodash.debounce": "^4.0.8",
+    "native-base": "^3.4.9",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-i18next": "^11.18.1",
+    "react-native": "~0.68.2",
+    "react-native-countdown-circle-timer": "^3.0.9",
+    "react-native-picker-select": "^8.0.4",
+    "react-native-safe-area-context": "^4.3.1",
+    "react-native-svg": "^12.3.0",
+    "react-native-use-stored-state": "^0.2.3",
+    "react-native-web": "~0.17.0",
+    "react-native-web-webview": "^1.0.2",
+    "react-native-webview": "^11.22.7",
+    "react-native-youtube-iframe": "^2.2.2",
+    "react-router-dom": "^6.3.0",
+    "react-router-native": "^6.3.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.0",
+    "@types/jest": "^28.1.0",
+    "@types/react": "^18.0.0",
+    "@types/react-native": "^0.69.0",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "eslint": "^8.19.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-i18next": "^6.0.0-4",
+    "eslint-plugin-react": "^7.30.0",
+    "eslint-plugin-react-native": "^4.0.0",
+    "jest": "^28.1.0",
     "prettier": "^2.7.0",
     "typescript": "^4.7.0"
   }
