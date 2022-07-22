@@ -217,7 +217,7 @@ export const getNutritionRecommendation = ({
   const bmi = calculateBMI(calcWeight, calcHeight);
   const bmr = calculateBMR({ heightInInches: calcHeight, weightInLbs: calcWeight, gender, bodyFat, age });
   const tdee = calculateTDEE(activityLevel, bmr);
-  const targetProtein = calculateMinimumProteinRequirement(calcWeight, bodyFat);
+  const targetProtein = calculateMinimumProteinRequirement(calcWeight, bodyFat, 5);
 
   const { type, reason } = getNutritionTypeRecommendation({
     gender,

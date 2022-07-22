@@ -1,15 +1,15 @@
 import { ActivityLevel, Gender } from '../constants';
-import { BmrFormula, calculateBMI, calculateBMR, calculateMinimumProteinRequirement, calculateTDEE } from './calculators';
+import { calculateBMI, calculateBMR, calculateMinimumProteinRequirement, calculateTDEE } from './calculators';
 
 test('bmr formulas', () => {
   expect(
-    calculateBMR({ weightInLbs: 165, heightInInches: 70, age: 38, gender: Gender.Male, bodyFat: 17 }, BmrFormula.MiffinStJeor)
+    calculateBMR({ weightInLbs: 165, heightInInches: 70, age: 38, gender: Gender.Male, bodyFat: 17 }, 'miffinStJeor')
   ).toEqual(1676);
   expect(
-    calculateBMR({ weightInLbs: 165, heightInInches: 70, age: 38, gender: Gender.Male, bodyFat: 17 }, BmrFormula.HarrisBenedict)
+    calculateBMR({ weightInLbs: 165, heightInInches: 70, age: 38, gender: Gender.Male, bodyFat: 17 }, 'harrisBenedict')
   ).toBe(1728);
   expect(
-    calculateBMR({ weightInLbs: 165, heightInInches: 70, age: 38, gender: Gender.Male, bodyFat: 17 }, BmrFormula.KatchMcArdle)
+    calculateBMR({ weightInLbs: 165, heightInInches: 70, age: 38, gender: Gender.Male, bodyFat: 17 }, 'katchMcArdle')
   ).toEqual(1715);
 });
 

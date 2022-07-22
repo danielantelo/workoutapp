@@ -5,7 +5,7 @@ import { Paragraph } from '../../components/Content';
 import { DashboardCard } from '../../components/Dashboards';
 import { getTodaysCalories, NutritionProtocol } from '../../domain/nutrition';
 import { ScheduledWorkout } from '../../domain/trainee';
-import { Destination, getWorkoutUrl, RoutingButton } from '../../utils/routing';
+import { getWorkoutUrl, RoutingButton } from '../../utils/routing';
 
 export default function Today({
   recommendedNutrition,

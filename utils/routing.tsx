@@ -66,7 +66,10 @@ export const RoutingButton = ({
       {...rest}
       onPress={() => {
         onPress && onPress();
-        navigate(to);
+        // @TODO use callbacks to fix bug with reducers not finishing before gotTo called
+        setTimeout(function () {
+          navigate(to);
+        }, 1000);
       }}
     >
       {children}

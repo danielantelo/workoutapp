@@ -26,10 +26,10 @@ export const Sets = ({
     newSets[setId][attr] = value;
     setSets(newSets);
 
-    // we debounce store updates for performance
+    // we debounce store updates to avoid too many global re-renders
     const debouncedSave = debounce(() => {
       attr === 'weight' ? onChangeSetWeight(exerciseId, setId, Number(value)) : onChangeSetReps(exerciseId, setId, Number(value));
-    }, 1000);
+    }, 1500);
     debouncedSave();
   };
 

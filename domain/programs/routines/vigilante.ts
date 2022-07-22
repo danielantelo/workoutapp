@@ -2,6 +2,13 @@ import { ExperienceLevel, Gender, Goal } from '../../constants';
 import { Exercise } from '../../exercises';
 import { Program, RoutineSet, Workout } from '../interfaces';
 
+const startingWeight = 'tenRepMax';
+const warmup = [
+  { percentage: 50, reps: 5 },
+  { percentage: 60, reps: 5 },
+  { percentage: 70, reps: 3 },
+];
+
 export const vigilanteRoutines: Program[] = [
   {
     id: 'Vigilante3Day',
@@ -17,11 +24,6 @@ export const vigilanteRoutines: Program[] = [
     workoutDuration: 60,
     duration: 12,
     workouts: (): Workout[] => {
-      const warmup = [
-        { percentage: 50, reps: 5 },
-        { percentage: 60, reps: 5 },
-        { percentage: 70, reps: 3 },
-      ];
       const mainSets = [{ targetReps: 5 }, { targetReps: 5 }, { targetReps: 5, AMRAP: true }];
       const mainRest = 3;
       return [
@@ -33,7 +35,7 @@ export const vigilanteRoutines: Program[] = [
               warmup,
               sets: mainSets,
               rest: mainRest,
-              startingWeight: 'eightRepMax',
+              startingWeight,
             },
             {
               exercise: Exercise.RDL,
@@ -44,14 +46,14 @@ export const vigilanteRoutines: Program[] = [
               warmup,
               sets: mainSets,
               rest: mainRest,
-              startingWeight: 'eightRepMax',
+              startingWeight,
             },
             {
               exercise: Exercise.Row,
               warmup,
               sets: mainSets,
               rest: mainRest,
-              startingWeight: 'eightRepMax',
+              startingWeight,
             },
             {
               exercise: Exercise.Curl,
@@ -75,7 +77,7 @@ export const vigilanteRoutines: Program[] = [
               warmup,
               sets: mainSets,
               rest: mainRest,
-              startingWeight: 'eightRepMax',
+              startingWeight,
             },
             {
               exercise: Exercise.WalkingLunges,
@@ -86,14 +88,14 @@ export const vigilanteRoutines: Program[] = [
               warmup,
               sets: mainSets,
               rest: mainRest,
-              startingWeight: 'eightRepMax',
+              startingWeight,
             },
             {
               exercise: Exercise.Pullup,
               warmup,
               sets: mainSets,
               rest: mainRest,
-              startingWeight: 'eightRepMax',
+              startingWeight,
             },
             {
               exercise: Exercise.TricepExtensions,
@@ -126,11 +128,6 @@ export const vigilanteRoutines: Program[] = [
     workoutDuration: 60,
     duration: 12,
     workouts: (): Workout[] => {
-      const warmup = [
-        { percentage: 50, reps: 5 },
-        { percentage: 60, reps: 5 },
-        { percentage: 70, reps: 3 },
-      ];
       const mainSets: RoutineSet[] = [
         { targetReps: 5, AMRAP: true },
         { targetReps: 8, AMRAP: true, percentage: 70 },
@@ -145,7 +142,7 @@ export const vigilanteRoutines: Program[] = [
               warmup,
               sets: mainSets,
               rest: mainRest,
-              startingWeight: 'eightRepMax',
+              startingWeight,
             },
             {
               exercise: Exercise.HipThrust,
@@ -156,14 +153,14 @@ export const vigilanteRoutines: Program[] = [
               warmup,
               sets: mainSets,
               rest: mainRest,
-              startingWeight: 'eightRepMax',
+              startingWeight,
             },
             {
               exercise: Exercise.Row,
               warmup,
               sets: mainSets,
               rest: mainRest,
-              startingWeight: 'eightRepMax',
+              startingWeight,
             },
             {
               exercise: Exercise.TricepExtensions,
@@ -191,7 +188,7 @@ export const vigilanteRoutines: Program[] = [
               warmup,
               sets: [{ targetReps: 5, AMRAP: true }],
               rest: mainRest,
-              startingWeight: 'eightRepMax',
+              startingWeight,
             },
             {
               exercise: Exercise.WalkingLunges,
@@ -202,20 +199,20 @@ export const vigilanteRoutines: Program[] = [
               warmup,
               sets: mainSets,
               rest: mainRest,
-              startingWeight: 'eightRepMax',
+              startingWeight,
             },
             {
               exercise: Exercise.Pullup,
               warmup,
               sets: mainSets,
               rest: mainRest,
-              startingWeight: 'eightRepMax',
+              startingWeight,
             },
             {
               exercise: Exercise.Dip,
               sets: mainSets,
               rest: mainRest,
-              startingWeight: 'eightRepMax',
+              startingWeight,
             },
             {
               exercise: Exercise.HammerCurl,

@@ -55,8 +55,6 @@ test('getRecommendedWeight', () => {
   expect(getRecommendedWeight({ ...conf, workoutId: 1 })(1, 0)).toEqual(45);
   // deloads when 3 fails
   expect(getRecommendedWeight({ ...conf, workoutId: 2 })(1, 0)).toEqual(135);
-  // does not increment previous lift if no target reps
-  expect(getRecommendedWeight({ ...conf, workoutId: 2 })(0, 0)).toEqual(60);
   // does not increment warmup weight
   expect(getRecommendedWeight({ ...conf, workoutId: 2 })(2, 0, true)).toEqual(undefined);
 });

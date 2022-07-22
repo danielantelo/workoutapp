@@ -26,6 +26,7 @@ export const ahtleanXRoutines: Program[] = [
       const mainRest = 2;
       const secondarySets = Array(level === ExperienceLevel.Beginner ? 3 : 4);
       const secondaryRest = 1;
+      const startingWeight = 'eightRepMax';
       return [
         {
           name: 'Workout A',
@@ -42,7 +43,7 @@ export const ahtleanXRoutines: Program[] = [
               warmup,
               sets: mainSets,
               rest: mainRest,
-              startingWeight: 'eightRepMax',
+              startingWeight,
             },
             {
               exercise: Exercise.HipThrust,
@@ -56,6 +57,7 @@ export const ahtleanXRoutines: Program[] = [
               warmup,
               sets: mainSets,
               rest: mainRest,
+              startingWeight,
             },
             {
               exercise: Exercise.Chinup,
@@ -66,6 +68,7 @@ export const ahtleanXRoutines: Program[] = [
               ],
               sets: [...secondarySets].fill({ minReps: 6, maxReps: 10 }),
               rest: mainRest,
+              startingWeight,
             },
             {
               exercise: Exercise.DbCarry,
@@ -96,6 +99,7 @@ export const ahtleanXRoutines: Program[] = [
               warmup,
               sets: mainSets,
               rest: mainRest,
+              startingWeight,
             },
             {
               exercise: Exercise.ReverseLunge,
@@ -109,6 +113,7 @@ export const ahtleanXRoutines: Program[] = [
               warmup,
               sets: mainSets,
               rest: mainRest,
+              startingWeight,
             },
             {
               exercise: Exercise.Row,

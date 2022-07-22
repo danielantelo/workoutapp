@@ -99,8 +99,14 @@ export const getRecommendedWeight =
       weight = Number(liftStandards[entry.startingWeight]!);
     } else if (!warmup && currentLift) {
       const needsDeload = currentLift.fails && currentLift.fails >= 3;
-      const passedLastAttempt = currentLift.targetReps && currentLift.reps >= currentLift.targetReps;
-      const needsToRepeatPrevious = currentLift.targetReps && currentLift.reps < currentLift.targetReps;
+      const passedLastAttempt =
+        (currentLift.targetReps && currentLift.reps >= currentLift.targetReps) ||
+        currentLift.reps >= set.targetReps ||
+        currentLift.reps >= set.maxReps;
+      const needsToRepeatPrevious =
+        (currentLift.targetReps && currentLift.reps < currentLift.targetReps) ||
+        currentLift.reps < set.targetReps ||
+        currentLift.reps < set.maxReps;
       if (needsDeload) {
         weight = Number(currentLift.weight) - Number(currentLift.weight) * (deloadDecrement / 100);
       } else if (passedLastAttempt) {

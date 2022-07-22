@@ -225,9 +225,9 @@ export const getStrengthLevel = (gender: Gender, everLifted: boolean, strengthSt
   const level = standardExercises.reduce<ExperienceLevel | undefined>((accLevel, lift) => {
     const liftStandards = strengthStandards[lift as keyof StrengthMetrics]!;
     const liftLevel = getLiftLevel(Gender[gender], lift as Exercise, {
-      oneRepMax: liftStandards.oneRepMax,
-      ratio: liftStandards.ratio,
-      reps: liftStandards.reps,
+      oneRepMax: liftStandards?.oneRepMax,
+      ratio: liftStandards?.ratio,
+      reps: liftStandards?.reps,
     });
     const isLowerStandard =
       accLevel && Object.values(ExperienceLevel).indexOf(liftLevel) < Object.values(ExperienceLevel).indexOf(accLevel);

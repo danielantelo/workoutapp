@@ -79,8 +79,8 @@ export default function Workout() {
 
   const finishWorkout = () => {
     updateSchedule({ type: 'end_workout', payload: { id } });
-    logWorkout(workout!, program!.name);
     updateCurrentLifts(trainee!.currentLifts, workout!, (newLifts: Lifts) => updateTrainee('currentLifts', newLifts));
+    logWorkout(workout!, program!.name);
   };
 
   return (
@@ -124,11 +124,11 @@ export default function Workout() {
           onSetComplete={onSetComplete}
           getPreviousLift={getPreviousLift(schedule!, Number(id), trainee!.currentLifts)}
         />
-        {workout?.status !== 'done' && (
-          <RoutingButton to={Destination.Dashboard} onPress={finishWorkout}>
-            {t('Finish Workout')}
-          </RoutingButton>
-        )}
+        {/* {workout?.status !== 'done' && ( */}
+        <RoutingButton to={Destination.Dashboard} onPress={finishWorkout}>
+          {t('Finish Workout')}
+        </RoutingButton>
+        {/* )} */}
       </FormCard>
     </HeadedLayout>
   );
