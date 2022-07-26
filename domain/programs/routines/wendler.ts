@@ -252,7 +252,7 @@ export const wendlerRoutines: Program[] = [
                   rest: mainRest,
                 },
                 {
-                  exercise: Exercise.Dips,
+                  exercise: Exercise.Dip,
                   sets: Array(4).fill({ minReps: 10, maxReps: 12 }),
                 },
                 {
@@ -361,7 +361,7 @@ export const wendlerRoutines: Program[] = [
               sets: [{ reps: 100 }],
             },
             {
-              exercise: Exercise.Dips,
+              exercise: Exercise.Dip,
               ignoreForTracking: true,
               sets: [{ reps: 200 }],
               bodyweight: true,
@@ -480,7 +480,7 @@ export const wendlerRoutines: Program[] = [
               sets: [{ reps: 100 }],
             },
             {
-              exercise: Exercise.Dips,
+              exercise: Exercise.Dip,
               ignoreForTracking: true,
               sets: [{ reps: 200 }],
               bodyweight: true,
@@ -598,7 +598,7 @@ export const wendlerRoutines: Program[] = [
               sets: [{ reps: 100 }],
             },
             {
-              exercise: Exercise.Dips,
+              exercise: Exercise.Dip,
               ignoreForTracking: true,
               sets: [{ reps: 200 }],
               bodyweight: true,

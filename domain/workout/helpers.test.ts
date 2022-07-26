@@ -9,7 +9,7 @@ import {
 } from './helpers';
 
 test('getWorkoutById', () => {
-  expect(getWorkoutById(mockSchedule)(1)).toMatchObject({ id: 1, date: '2022-06-02', status: 'pending', name: 'Workout B' });
+  expect(getWorkoutById(mockSchedule)(1)).toMatchObject({ id: 1, date: '2022-06-02', status: 'done', name: 'Workout B' });
 });
 
 test('getWorkoutTotalSetCount', () => {
@@ -19,7 +19,7 @@ test('getWorkoutTotalSetCount', () => {
 
 test('getCompleteSetCount', () => {
   expect(getCompleteSetCount(mockSchedule[0])).toEqual(9);
-  expect(getCompleteSetCount(mockSchedule[1])).toEqual(1);
+  expect(getCompleteSetCount(mockSchedule[1])).toEqual(6);
 });
 
 test('getPreviousWorkoutOfType', () => {
@@ -27,11 +27,11 @@ test('getPreviousWorkoutOfType', () => {
 });
 
 test('getPreviousLift', () => {
-  expect(getPreviousLift(mockSchedule, 2)(0, 0)).toEqual({ reps: 5, weight: 50 });
+  expect(getPreviousLift(mockSchedule, 2)(0, 0)).toEqual({ reps: 5, weight: 60 });
   // with no previous and no global currentLifts
   expect(getPreviousLift(mockSchedule, 0)(0, 0)).toEqual(undefined);
   // with no previoys but with global currentLifts, but only for first set
-  expect(getPreviousLift(mockSchedule, 0, mockCurrentLifts)(0, 0)).toEqual({ reps: 10, weight: 60 });
+  expect(getPreviousLift(mockSchedule, 0, mockCurrentLifts)(0, 0)).toEqual({ reps: 5, weight: 60 });
   expect(getPreviousLift(mockSchedule, 0, mockCurrentLifts)(0, 1)).toEqual(undefined);
 });
 
@@ -41,13 +41,13 @@ test('getRecommendedWeight', () => {
     barbellIncrement: 2.5,
     barbellDecrement: 10,
     dumbbellIncrement: 2,
-    dumbbellDecrement: 20,
+    dumbbellDecrement: 15,
     strengthStandards: mockStrengthStandards,
     bodyweight: 75,
     currentLifts: mockCurrentLifts,
   };
   // increments previous workout lift
-  //expect(getRecommendedWeight({ ...conf, workoutId: 2 })(0, 0, true)).toEqual(52.5);
+  expect(getRecommendedWeight({ ...conf, workoutId: 2 })(0, 0)).toEqual(62.5);
   // calculates from set percentage
   expect(getRecommendedWeight({ ...conf, workoutId: 1 })(0, 0, true)).toEqual(40);
   expect(getRecommendedWeight({ ...conf, workoutId: 1 })(0, 1, true)).toEqual(60);
@@ -57,4 +57,6 @@ test('getRecommendedWeight', () => {
   expect(getRecommendedWeight({ ...conf, workoutId: 2 })(1, 0)).toEqual(135);
   // does not increment warmup weight
   expect(getRecommendedWeight({ ...conf, workoutId: 2 })(2, 0, true)).toEqual(undefined);
+  // does not increment AMRAP sets if not higher than targetReps weight
+  expect(getRecommendedWeight({ ...conf, workoutId: 3 })(0, 0)).toEqual(40);
 });

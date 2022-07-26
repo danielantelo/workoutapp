@@ -7,6 +7,8 @@ import { Program, Workout } from '../programs/interfaces';
 export interface ScheduledWorkout extends Workout {
   id: number;
   date: Date;
+  startTime?: number;
+  endTime?: number;
   status?: 'pending' | 'done' | 'in progress';
 }
 
@@ -42,10 +44,12 @@ export const scheduleReducer = (
   switch (type) {
     case 'start_workout':
       newSchedule[id].status = 'in progress';
+      newSchedule[id].startTime = Date.now();
       return newSchedule;
     case 'end_workout':
       //markAllSetsAsComplete(schedule, id);
       newSchedule[id].status = 'done';
+      newSchedule[id].endTime = Date.now();
       return newSchedule;
     case 'change_set_weight':
       newSchedule[id].routine[exerciseId].sets[setId].weight = value;
@@ -102,7 +106,7 @@ export const getScheduledForThisWeek = (schedule: ScheduledWorkout[]): Scheduled
 export const markAllSetsAsComplete = (schedule: ScheduledWorkout[], workoutId: number): void => {
   schedule[workoutId].routine.forEach((exercise, exerciseId) => {
     exercise.warmup?.forEach((set, setId) => updateWorkoutWithCompletedSet(schedule, workoutId, exerciseId, setId, true));
-    exercise.sets.forEach((set, setId) => updateWorkoutWithCompletedSet(schedule, workoutId, exerciseId, setId, false));
+    exercise.sets?.forEach((set, setId) => updateWorkoutWithCompletedSet(schedule, workoutId, exerciseId, setId, false));
   });
 };
 

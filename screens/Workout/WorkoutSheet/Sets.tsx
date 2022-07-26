@@ -29,7 +29,7 @@ export const Sets = ({
     // we debounce store updates to avoid too many global re-renders
     const debouncedSave = debounce(() => {
       attr === 'weight' ? onChangeSetWeight(exerciseId, setId, Number(value)) : onChangeSetReps(exerciseId, setId, Number(value));
-    }, 1500);
+    }, 2000);
     debouncedSave();
   };
 
@@ -49,7 +49,7 @@ export const Sets = ({
                         keyboardType={'decimal-pad'}
                         value={entry.weight?.toString() || ''}
                         textAlign={'center'}
-                        onChangeText={(value: string) => onUpdate(setId, 'weight', value)}
+                        onChangeText={(value: string) => onUpdate(setId, 'weight', value !== '' ? Number(value) : '')}
                         placeholder={getRecommendedWeight(exerciseId, setId)?.toString()}
                         marginX={1}
                       />
@@ -64,7 +64,7 @@ export const Sets = ({
                   keyboardType={'number-pad'}
                   value={entry.reps?.toString() || ''}
                   textAlign={'center'}
-                  onChangeText={(value: string) => onUpdate(setId, 'reps', Number(value))}
+                  onChangeText={(value: string) => onUpdate(setId, 'reps', value !== '' ? Number(value) : '')}
                   placeholder={getTargetRepsPlaceholder(entry)}
                   marginX={1}
                 />

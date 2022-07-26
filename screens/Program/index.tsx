@@ -8,6 +8,7 @@ import { Loader } from '../../components/Loader';
 import { WorkoutList } from '../../components/Workouts';
 import { WorkoutRoutinesHScroll } from '../../components/Workouts/WorkoutRoutinesHScroll';
 import { getTraineeMetrics, useActiveProgram, useTrainee } from '../../domain/trainee';
+import { ExternalLink } from '../../utils/routing';
 
 export default function Program() {
   const { t } = useTranslation();
@@ -20,13 +21,14 @@ export default function Program() {
 
   const { strengthLevel } = getTraineeMetrics(trainee!);
   const completedCount = schedule!.filter((item) => item.status === 'done').length;
+  const source = program?.link ? new URL(program.link)?.hostname : undefined;
 
   return (
     <HeadedLayout showNav heading={t('Program')}>
       <DashboardCard heading={t('Active Program')}>
         <DashboardDetail label={t('Name')} value={program!.name} />
-        <DashboardDetail label={t('Author')} value={program!.author} />
-        {program!.link && <DashboardDetail label={t('Sourced from')} value={program!.link} />}
+        {program!.author && <DashboardDetail label={t('Author')} value={program!.author} />}
+        {source && <DashboardDetail label={t('Sourced from')} value={<ExternalLink to={program!.link} text={source} />} />}
         <DashboardDetail label={t('Duration')} value={`${program!.duration} weeks`} />
         <DashboardDetail label={t('Workouts per week')} value={program!.daysPerWeek} />
         <DashboardDetail label={t('Workout duration')} value={`${program!.workoutDuration} min`} />

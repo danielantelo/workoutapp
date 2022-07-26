@@ -4,7 +4,7 @@ import { Program } from '../interfaces';
 export const aWorkoutRoutines: Program[] = [
   {
     id: 'AWRUpperLower',
-    author: 'Jay (AWorkoutRoutine.com)',
+    author: 'Jay',
     name: 'A Workout Routine Muscle Building Upper Lower',
     link: 'https://www.aworkoutroutine.com/the-muscle-building-workout-routine/',
     level: [ExperienceLevel.Novice, ExperienceLevel.Intermediate],
@@ -15,7 +15,7 @@ export const aWorkoutRoutines: Program[] = [
   },
   {
     id: 'AWR5day',
-    author: 'Jay (AWorkoutRoutine.com)',
+    author: 'Jay',
     name: 'A Workout Routine 5-Day Upper Lower Push Pull Legs',
     link: 'https://www.aworkoutroutine.com/5-day-workout-routine/',
     level: [ExperienceLevel.Novice, ExperienceLevel.Intermediate, ExperienceLevel.Advanced],
@@ -26,7 +26,7 @@ export const aWorkoutRoutines: Program[] = [
   },
   {
     id: 'AWRPushPullLegs',
-    author: 'Jay (AWorkoutRoutine.com)',
+    author: 'Jay',
     name: 'A Workout Routine Push Pull Legs',
     link: 'https://www.aworkoutroutine.com/push-pull-legs-split/',
     level: [ExperienceLevel.Novice, ExperienceLevel.Intermediate, ExperienceLevel.Advanced],

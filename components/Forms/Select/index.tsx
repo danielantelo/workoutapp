@@ -1,6 +1,7 @@
 import { Checkbox, HStack, Icon, Text } from 'native-base';
 import RNPickerSelect from 'react-native-picker-select';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { Platform } from 'react-native';
 
 type StringEnum = { [key: string]: string };
 
@@ -19,21 +20,22 @@ export const Select = ({
   textAlign?: 'right' | 'left' | 'center';
   border?: boolean;
 }) => {
+  const baseStyles = {
+    width,
+    textAlign,
+    fontSize: 11,
+    padding: 6,
+    paddingRight: 20,
+    borderWidth: border ? 1 : 0,
+    borderColor: 'lightgray',
+    borderRadius: 3,
+  };
   return (
     <RNPickerSelect
       style={{
-        inputWeb: { fontSize: 11, padding: 4, paddingRight: 10, borderWidth: border ? 1 : 0, textAlign },
-        inputIOS: {
-          width,
-          fontSize: 11,
-          padding: 6,
-          paddingRight: 20,
-          borderWidth: border ? 1 : 0,
-          borderColor: 'lightgray',
-          borderRadius: 3,
-          textAlign,
-        },
-        inputAndroid: { fontSize: 11, padding: 4, paddingRight: 20, textAlign },
+        inputWeb: { ...baseStyles, paddingRight: 10 },
+        inputIOS: { ...baseStyles },
+        inputAndroid: { ...baseStyles },
         iconContainer: {
           paddingTop: 4,
           paddingRight: 2,
@@ -44,7 +46,7 @@ export const Select = ({
       value={selectedValue || ''}
       items={items}
       // @ts-expect-error ignore
-      Icon={() => <Icon as={MaterialCommunityIcons} name={'chevron-down'} size={'sm'} />}
+      Icon={() => (Platform.OS !== 'web' ? <Icon as={MaterialCommunityIcons} name={'chevron-down'} size={'sm'} /> : <></>)}
     />
   );
 };

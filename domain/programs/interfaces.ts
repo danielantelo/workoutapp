@@ -12,7 +12,7 @@ export interface RoutineSet {
   percentage?: number;
   ratio?: number;
   status?: 'pending' | 'done';
-  basis?: keyof LiftMetrics;
+  basis?: keyof LiftMetrics | 'firstSet';
   ignoreForTracking?: boolean;
 }
 export interface RoutineEntry {
@@ -36,8 +36,8 @@ export interface Workout {
 export interface Program {
   id: string;
   name: string;
-  author: string;
-  link: string;
+  author?: string;
+  link?: string;
   level: ExperienceLevel[];
   gender: Gender[];
   goal: Goal[];

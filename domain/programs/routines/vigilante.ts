@@ -11,11 +11,122 @@ const warmup = [
 
 export const vigilanteRoutines: Program[] = [
   {
+    id: 'Vigilante2Day',
+    name: 'Vigilante Minimalist 2 Day Training',
+    level: [ExperienceLevel.Beginner, ExperienceLevel.Novice, ExperienceLevel.Intermediate],
+    gender: [Gender.Male, Gender.Female],
+    goal: [Goal.Strength, Goal.Size, Goal.Lean, Goal.Speed],
+    daysPerWeek: 2,
+    weeklySchedule: [0, 3],
+    workoutDuration: 60,
+    duration: 12,
+    workouts: (): Workout[] => {
+      const mainSets = [{ targetReps: 5 }, { targetReps: 5 }, { targetReps: 5, AMRAP: true }];
+      const secondarySets = [{ targetReps: 5 }, { targetReps: 5, AMRAP: true }];
+      const mainRest = 2;
+      return [
+        {
+          name: 'Workout A',
+          routine: [
+            {
+              exercise: Exercise.Bench,
+              warmup,
+              sets: mainSets,
+              rest: mainRest,
+              startingWeight,
+            },
+            {
+              exercise: Exercise.Squat,
+              warmup,
+              sets: mainSets,
+              rest: mainRest,
+              startingWeight,
+            },
+            {
+              exercise: Exercise.Row,
+              warmup,
+              sets: mainSets,
+              rest: mainRest,
+              startingWeight,
+            },
+            {
+              exercise: Exercise.Press,
+              sets: secondarySets,
+              rest: mainRest,
+              startingWeight,
+            },
+            {
+              exercise: Exercise.Deadlift,
+              sets: [{ targetReps: 5, AMRAP: true }],
+              rest: mainRest,
+              startingWeight,
+            },
+            {
+              exercise: Exercise.Pullup,
+              sets: secondarySets,
+              rest: mainRest,
+              startingWeight,
+            },
+            {
+              exercise: Exercise.DbCarry,
+              sets: Array(3).fill({ targetReps: 50 }),
+            },
+          ],
+        },
+        {
+          name: 'Workout B',
+          routine: [
+            {
+              exercise: Exercise.Press,
+              warmup,
+              sets: mainSets,
+              rest: mainRest,
+              startingWeight,
+            },
+            {
+              exercise: Exercise.Deadlift,
+              warmup,
+              sets: [{ targetReps: 3 }, { targetReps: 3 }, { targetReps: 3, AMRAP: true }],
+              rest: mainRest,
+              startingWeight,
+            },
+            {
+              exercise: Exercise.Pullup,
+              warmup,
+              sets: mainSets,
+              rest: mainRest,
+              startingWeight,
+            },
+            {
+              exercise: Exercise.Bench,
+              sets: secondarySets,
+              rest: mainRest,
+              startingWeight,
+            },
+            {
+              exercise: Exercise.Squat,
+              sets: secondarySets,
+              rest: mainRest,
+              startingWeight,
+            },
+            {
+              exercise: Exercise.Row,
+              sets: secondarySets,
+              rest: mainRest,
+              startingWeight,
+            },
+            {
+              exercise: Exercise.DbOverheadCarry,
+              sets: Array(3).fill({ targetReps: 50 }),
+            },
+          ],
+        },
+      ];
+    },
+  },
+  {
     id: 'Vigilante3Day',
     name: 'Vigilante Full Body Training',
-    author: 'Vigilante Training',
-    link: '',
-    video: '',
     level: [ExperienceLevel.Beginner, ExperienceLevel.Novice, ExperienceLevel.Intermediate],
     gender: [Gender.Male, Gender.Female],
     goal: [Goal.Strength, Goal.Size, Goal.Lean, Goal.Speed],
@@ -23,8 +134,15 @@ export const vigilanteRoutines: Program[] = [
     weeklySchedule: [0, 2, 4],
     workoutDuration: 60,
     duration: 12,
-    workouts: (): Workout[] => {
-      const mainSets = [{ targetReps: 5 }, { targetReps: 5 }, { targetReps: 5, AMRAP: true }];
+    workouts: (level: ExperienceLevel): Workout[] => {
+      const mainSets = [
+        { targetReps: 5 },
+        { targetReps: 5 },
+        { targetReps: 5, AMRAP: true },
+        ...(level === ExperienceLevel.Intermediate
+          ? [{ targetReps: 10, AMRAP: true, percentage: 65, ignoreForTracking: true }]
+          : []),
+      ];
       const mainRest = 3;
       return [
         {
@@ -117,9 +235,6 @@ export const vigilanteRoutines: Program[] = [
   {
     id: 'VigilanteAdvanced3Day',
     name: 'Vigilante Advanced Full Body Training',
-    author: 'Vigilante Training',
-    link: '',
-    video: '',
     level: [ExperienceLevel.Intermediate, ExperienceLevel.Advanced, ExperienceLevel.Vigilante],
     gender: [Gender.Male, Gender.Female],
     goal: [Goal.Strength, Goal.Size, Goal.Lean, Goal.Speed],
@@ -130,13 +245,19 @@ export const vigilanteRoutines: Program[] = [
     workouts: (): Workout[] => {
       const mainSets: RoutineSet[] = [
         { targetReps: 5, AMRAP: true },
-        { targetReps: 8, AMRAP: true, percentage: 70 },
+        { targetReps: 10, AMRAP: true, percentage: 70, ignoreForTracking: true },
+        { targetReps: 15, AMRAP: true, percentage: 60, ignoreForTracking: true },
       ];
       const mainRest = 2;
       return [
         {
           name: 'Workout A',
           routine: [
+            {
+              exercise: Exercise.MuscleUp,
+              bodyweight: true,
+              sets: Array(3).fill({ AMRAP: true }),
+            },
             {
               exercise: Exercise.Squat,
               warmup,
@@ -223,14 +344,19 @@ export const vigilanteRoutines: Program[] = [
               sets: Array(3).fill({ targetReps: 12 }),
             },
             {
-              exercise: Exercise.DbOverheadCarry,
-              sets: Array(4).fill({ targetReps: 50 }),
+              exercise: Exercise.TurkishGetUp,
+              sets: Array(4).fill({ minReps: 8, maxReps: 12 }),
             },
           ],
         },
         {
           name: 'Workout C',
           routine: [
+            {
+              exercise: Exercise.HandstandPushup,
+              bodyweight: true,
+              sets: Array(3).fill({ AMRAP: true }),
+            },
             {
               exercise: Exercise.FrontSquat,
               warmup,
@@ -244,14 +370,12 @@ export const vigilanteRoutines: Program[] = [
             },
             {
               exercise: Exercise.InclineBench,
-              warmup,
               sets: Array(4).fill({ minReps: 6, maxReps: 10 }),
               rest: mainRest,
               startingWeight: 'twelveRepMax',
             },
             {
               exercise: Exercise.DumbbellRow,
-              warmup,
               sets: Array(4).fill({ minReps: 8, maxReps: 12 }),
             },
             {
@@ -260,7 +384,6 @@ export const vigilanteRoutines: Program[] = [
             },
             {
               exercise: Exercise.Chinup,
-              warmup,
               sets: Array(3).fill({ AMRAP: true }),
             },
             {
@@ -268,8 +391,8 @@ export const vigilanteRoutines: Program[] = [
               sets: Array(3).fill({ targetReps: 12 }),
             },
             {
-              exercise: Exercise.LegRaises,
-              sets: Array(3).fill({ AMRAP: true }),
+              exercise: Exercise.DbOverheadCarry,
+              sets: Array(4).fill({ targetReps: 50 }),
             },
           ],
         },

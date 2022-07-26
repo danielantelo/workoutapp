@@ -40,12 +40,14 @@ export const HeadedLayout = ({
   backgroundColor = 'secondary.50',
   heading,
   headerElements,
+  showLogo = true,
 }: {
   showNav?: boolean;
   children: React.ReactNode;
   heading?: string;
   headerElements?: React.ReactNode;
   backgroundColor?: string;
+  showLogo?: boolean;
 }) => {
   return (
     <Box flex={1} backgroundColor={backgroundColor}>
@@ -58,7 +60,7 @@ export const HeadedLayout = ({
           style={Platform.OS === 'web' ? { position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 100 } : {}}
         >
           <Center>
-            <Logo size={'sm'} />
+            {showLogo && <Logo size={'sm'} />}
             {heading && (
               <Text bold color={'white'}>
                 {heading}

@@ -2,8 +2,9 @@ import { Exercise } from '../exercises';
 import { ScheduledWorkout } from '../trainee';
 
 export const mockCurrentLifts = {
-  [Exercise.Bench]: { weight: 60, reps: 10 },
+  [Exercise.Bench]: { weight: 60, reps: 5 },
   [Exercise.Deadlift]: { weight: 150, reps: 2, targetReps: 5, fails: 3 },
+  [Exercise.Row]: { weight: 40, reps: 5, targetReps: 5, AMRAP: true },
 };
 
 export const mockStrengthStandards = {
@@ -22,9 +23,9 @@ export const mockSchedule = [
       {
         exercise: Exercise.Bench,
         sets: [
-          { reps: 5, targetReps: 5, status: 'done', weight: 50 },
-          { reps: 5, targetReps: 5, status: 'done', weight: 50 },
-          { reps: 5, targetReps: 5, status: 'done', weight: 50 },
+          { reps: 5, targetReps: 5, status: 'done', weight: 60 },
+          { reps: 5, targetReps: 5, status: 'done', weight: 60 },
+          { reps: 5, targetReps: 5, status: 'done', weight: 60 },
         ],
       },
       {
@@ -48,7 +49,7 @@ export const mockSchedule = [
   {
     id: 1,
     date: '2022-06-02',
-    status: 'pending',
+    status: 'done',
     name: 'Workout B',
     routine: [
       {
@@ -59,18 +60,18 @@ export const mockSchedule = [
           { targetReps: 5, percentage: 80 },
         ],
         sets: [
-          { targetReps: 5, status: 'done' },
-          { targetReps: 5, status: 'pending' },
-          { targetReps: 5, status: 'pending' },
+          { weight: 40, targetReps: 5, reps: 5, status: 'done' },
+          { weight: 40, targetReps: 5, reps: 5, status: 'done' },
+          { weight: 40, targetReps: 5, reps: 5, status: 'done', AMRAP: true },
         ],
       },
       {
         exercise: Exercise.Press,
         startingWeight: 'eightRepMax',
         sets: [
-          { targetReps: 10, status: 'pending' },
-          { targetReps: 10, status: 'pending' },
-          { targetReps: 10, status: 'pending' },
+          { targetReps: 10, reps: 10, status: 'done' },
+          { targetReps: 10, reps: 10, status: 'done' },
+          { targetReps: 10, reps: 10, status: 'done' },
         ],
       },
     ],
@@ -78,7 +79,7 @@ export const mockSchedule = [
   {
     id: 2,
     date: '2022-06-01',
-    status: 'done',
+    status: 'pending',
     name: 'Workout A',
     routine: [
       {
@@ -103,6 +104,36 @@ export const mockSchedule = [
           { targetReps: 10, status: 'pending' },
           { targetReps: 10, status: 'pending' },
           { targetReps: 10, status: 'pending' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 3,
+    date: '2022-06-02',
+    status: 'pending',
+    name: 'Workout B',
+    routine: [
+      {
+        exercise: Exercise.Row,
+        warmup: [
+          { targetReps: 5, percentage: 40 },
+          { targetReps: 5, percentage: 60 },
+          { targetReps: 5, percentage: 80 },
+        ],
+        sets: [
+          { targetReps: 5, status: 'done' },
+          { targetReps: 5, status: 'pending' },
+          { targetReps: 5, status: 'pending', AMRAP: true },
+        ],
+      },
+      {
+        exercise: Exercise.Press,
+        startingWeight: 'eightRepMax',
+        sets: [
+          { targetReps: 10, status: 'pending' },
+          { targetReps: 10, status: 'pending' },
+          { targetReps: 10, status: 'pending', AMRAP: true },
         ],
       },
     ],

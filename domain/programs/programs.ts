@@ -1,15 +1,16 @@
 import { ExperienceLevel, Gender, Goal } from '../constants';
 import { Program } from './interfaces';
+import { arnoldRoutines } from './routines/arnold';
 import { ahtleanXRoutines } from './routines/athleanx';
 // import { aWorkoutRoutines } from './routines/aworkoutroutine';
-// import { builtWithScienceRoutines } from './routines/builtwithschience';
-// import { greyskullRoutines } from './routines/greyskull';
+import { builtWithScienceRoutines } from './routines/builtwithschience';
+import { greyskullRoutines } from './routines/greyskull';
 // import { gzclRoutines } from './routines/gzcl';
-// import { kinobodyRoutines } from './routines/kinobody';
-// import { leanGainsRoutines } from './routines/leangains';
-// import { oldSchoolRoutines } from './routines/oldschool';
-// import { otherRoutines } from './routines/other';
-// import { redditRoutines } from './routines/reddit';
+import { kinobodyRoutines } from './routines/kinobody';
+import { leanGainsRoutines } from './routines/leangains';
+import { oldSchoolRoutines } from './routines/oldschool';
+import { otherRoutines } from './routines/other';
+import { redditRoutines } from './routines/reddit';
 import { ssRoutines } from './routines/startingstrength';
 import { slRoutines } from './routines/stronglifts';
 import { vigilanteRoutines } from './routines/vigilante';
@@ -20,16 +21,17 @@ export const programs: Program[] = [
   ...slRoutines,
   ...ahtleanXRoutines,
   // ...aWorkoutRoutines,
-  // ...builtWithScienceRoutines,
-  // ...greyskullRoutines,
+  ...builtWithScienceRoutines,
+  ...greyskullRoutines,
   // ...gzclRoutines,
-  // ...kinobodyRoutines,
-  // ...leanGainsRoutines,
-  // ...oldSchoolRoutines,
-  // ...otherRoutines,
-  // ...redditRoutines,
+  ...kinobodyRoutines,
+  ...leanGainsRoutines,
+  ...oldSchoolRoutines,
+  ...otherRoutines,
+  ...redditRoutines,
   ...wendlerRoutines,
   ...vigilanteRoutines,
+  ...arnoldRoutines,
 ].sort((a, b) => {
   return a.name > b.name ? 1 : -1;
 });

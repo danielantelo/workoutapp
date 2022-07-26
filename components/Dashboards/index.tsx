@@ -1,4 +1,5 @@
 import { Box, HStack, Heading, Text, useTheme } from 'native-base';
+import { ReactNode } from 'react';
 
 export const DashboardHeading = ({ heading }: { heading: string }) => (
   <Heading fontSize={'md'} fontWeight={400} marginY={2}>
@@ -20,7 +21,7 @@ export const DashboardCard = ({ children, heading }: { children: React.ReactNode
 
 export const DashboardLabel = ({ children }: { children: React.ReactNode }) => <Text bold>{children}</Text>;
 
-export const DashboardDetail = ({ label, value }: { label: string; value: string | number }) => (
+export const DashboardDetail = ({ label, value }: { label: string; value: string | number | ReactNode }) => (
   <HStack paddingY={1} justifyContent={'space-between'} alignItems={'center'}>
     <DashboardLabel>{label}:</DashboardLabel>
     <Text>{value}</Text>

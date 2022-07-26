@@ -1,8 +1,8 @@
 import { Switch, Text } from 'native-base';
 import { useTranslation } from 'react-i18next';
 
-import { FormCard, InlineField } from '../../components/Forms';
-import { NutritionInfo } from '../../components/Nutrition';
+import { FormCard, InlineField } from '../Forms';
+import { NutritionInfo } from '.';
 import { NutritionProtocol, NutritionType } from '../../domain/nutrition';
 import { Trainee, UpdateTraineeFn } from '../../domain/trainee';
 

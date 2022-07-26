@@ -4,7 +4,7 @@ import { Program } from '../interfaces';
 export const gzclRoutines: Program[] = [
   {
     id: 'GZCLP',
-    author: 'Cody LeFever (GZCL)',
+    author: 'Cody LeFever',
     name: 'GZCLP',
     link: 'https://saynotobroscience.com/gzclp-infographic/',
     level: [ExperienceLevel.Novice, ExperienceLevel.Intermediate],
@@ -15,7 +15,7 @@ export const gzclRoutines: Program[] = [
   },
   {
     id: 'JackedAndTan',
-    author: 'Cody LeFever (GZCL)',
+    author: 'Cody LeFever',
     name: 'GZCL: Jacked & Tan',
     link: 'http://swoleateveryheight.blogspot.com/2016/07/jacked-tan-20.html',
     level: [ExperienceLevel.Novice, ExperienceLevel.Intermediate],
@@ -26,7 +26,7 @@ export const gzclRoutines: Program[] = [
   },
   {
     id: 'TheRippler',
-    author: 'Cody LeFever (GZCL)',
+    author: 'Cody LeFever',
     name: 'GZCL: The Rippler',
     link: 'https://www.reddit.com/r/gzcl/wiki/rippler',
     level: [ExperienceLevel.Novice, ExperienceLevel.Intermediate],

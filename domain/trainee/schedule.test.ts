@@ -75,13 +75,13 @@ test('getScheduledForThisWeek', () => {
 });
 
 test('updateWorkoutWithCompletedSet', () => {
-  expect(schedule[1].routine[0].sets).toMatchObject([
-    { targetReps: 5, status: 'done' },
+  expect(schedule[2].routine[0].sets).toMatchObject([
+    { targetReps: 5, status: 'pending' },
     { targetReps: 5, status: 'pending' },
     { targetReps: 5, status: 'pending' },
   ]);
-  updateWorkoutWithCompletedSet(schedule, 1, 0, 0, false, 100);
-  expect(schedule[1].routine[0].sets).toMatchObject([
+  updateWorkoutWithCompletedSet(schedule, 2, 0, 0, false, 100);
+  expect(schedule[2].routine[0].sets).toMatchObject([
     { reps: 5, targetReps: 5, status: 'done', weight: 100 },
     { targetReps: 5, status: 'pending' },
     { targetReps: 5, status: 'pending' },
@@ -89,13 +89,13 @@ test('updateWorkoutWithCompletedSet', () => {
 });
 
 test('markAllSetsAsComplete', () => {
-  expect(schedule[1].routine[0].sets).toMatchObject([
+  expect(schedule[2].routine[0].sets).toMatchObject([
     { targetReps: 5, status: 'done' },
     { targetReps: 5, status: 'pending' },
     { targetReps: 5, status: 'pending' },
   ]);
-  markAllSetsAsComplete(schedule, 1);
-  expect(schedule[1].routine[0].sets).toMatchObject([
+  markAllSetsAsComplete(schedule, 2);
+  expect(schedule[2].routine[0].sets).toMatchObject([
     { targetReps: 5, status: 'done' },
     { targetReps: 5, status: 'done' },
     { targetReps: 5, status: 'done' },

@@ -5,7 +5,7 @@ import { WeekDay } from '../../domain/constants';
 import { getTraineeMetrics, getTraineeRecommendations, useActiveProgram, useTrainee } from '../../domain/trainee';
 import { Destination, RoutingButton } from '../../utils/routing';
 import { Comparison } from './Comparison';
-import { NutritionRecommendation } from './NutritionRecommendation';
+import { NutritionRecommendation } from '../../components/Nutrition/NutritionRecommendation';
 import { ProgramRecommendation } from './ProgramRecommendation';
 
 export default function ProgramSelection() {

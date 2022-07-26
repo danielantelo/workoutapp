@@ -34,6 +34,7 @@ export interface Trainee {
   prefersProgramHoping: boolean;
   prefersMinimalLegs: boolean;
 
+  returningFromBreak: boolean;
   needsMetabolicReset: boolean;
   prefersCycledNutrition: boolean;
   prefersHigherCaloriesOnWeekends: boolean;

@@ -18,9 +18,10 @@ export const Activity = ({ trainee, updateTrainee }: { trainee: Trainee; updateT
     preferredUnitsType,
     currentLifts,
     weight,
+    returningFromBreak,
   } = trainee;
   return (
-    <FormCard heading={t('Your current activity')}>
+    <FormCard heading={t('Your current activity and fitnesss')}>
       <InlineField>
         <Text>{t('General daily activity')}</Text>
         <EnumSelect
@@ -81,14 +82,30 @@ export const Activity = ({ trainee, updateTrainee }: { trainee: Trainee; updateT
         />
       </InlineField>
       {hasLifted && (
-        <LiftingStandardsCalculator
-          unitsType={UnitsType[preferredUnitsType]}
-          lifts={currentLifts}
-          weight={weight}
-          setLifts={(newLifts: Lifts) => {
-            updateTrainee('currentLifts', newLifts);
-          }}
-        />
+        <>
+          <InlineField>
+            <Text>{t('Are you returning from an injury or long break from training?')}</Text>
+            <Select
+              selectedValue={returningFromBreak ? 'yes' : 'no'}
+              onValueChange={(value: string) => updateTrainee('returningFromBreak', value === 'yes')}
+              items={[
+                { value: 'yes', label: 'yes' },
+                { value: 'no', label: 'no' },
+              ]}
+            />
+          </InlineField>
+          <Text paddingY={2} bold>
+            {t('What are your most recent lifts?')}
+          </Text>
+          <LiftingStandardsCalculator
+            unitsType={UnitsType[preferredUnitsType]}
+            lifts={currentLifts}
+            weight={weight}
+            setLifts={(newLifts: Lifts) => {
+              updateTrainee('currentLifts', newLifts);
+            }}
+          />
+        </>
       )}
     </FormCard>
   );

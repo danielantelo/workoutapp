@@ -50,7 +50,7 @@ export const slRoutines: Program[] = [
               rest,
             },
             {
-              exercise: Exercise.Dips,
+              exercise: Exercise.Dip,
               optional: true,
               bodyweight: true,
               sets: [{ AMRAP: true }, { AMRAP: true }, { AMRAP: true }],
@@ -360,7 +360,7 @@ export const slRoutines: Program[] = [
               rest,
             },
             {
-              exercise: Exercise.Dips,
+              exercise: Exercise.Dip,
               sets: [{ targetReps: 6 }, { targetReps: 6 }, { targetReps: 6 }],
               rest: 2,
             },

@@ -87,6 +87,7 @@ export default function Workout() {
     <HeadedLayout
       showNav
       heading={workout!.name}
+      showLogo={false}
       headerElements={
         <>
           <Progress w="70%" colorScheme="primary" value={(setsDone / totalSets) * 100} marginY={1} />

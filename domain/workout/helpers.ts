@@ -80,7 +80,7 @@ export const getRecommendedWeight =
     const entry = schedule[workoutId].routine[exerciseId];
 
     const currentLift = currentLifts[entry.exercise as keyof typeof currentLifts];
-    const previous = getPreviousLift(schedule, workoutId)(exerciseId, setId);
+    const previous = getPreviousLift(schedule, workoutId)(exerciseId, setId, warmup);
     const liftStandards = strengthStandards[entry.exercise as keyof typeof strengthStandards];
     const set = warmup ? entry.warmup?.[setId] : entry.sets[setId];
 
@@ -91,6 +91,21 @@ export const getRecommendedWeight =
     let weight;
     if (set?.weight) {
       weight = set.weight;
+    } else if (set?.percentage && set?.basis === 'firstSet') {
+      const firstSetWeight =
+        schedule[workoutId].routine[exerciseId].sets[0].weight ||
+        getRecommendedWeight({
+          schedule,
+          workoutId,
+          barbellIncrement,
+          barbellDecrement,
+          dumbbellIncrement,
+          dumbbellDecrement,
+          strengthStandards,
+          bodyweight,
+          currentLifts,
+        })(exerciseId, 0);
+      weight = firstSetWeight * set.percentage;
     } else if (set?.percentage && liftStandards) {
       weight = liftStandards[set.basis ?? 'oneRepMax']! * (set.percentage / 100);
     } else if (set?.ratio) {
@@ -138,10 +153,11 @@ const getTrackingAttemptFromSets = (sets: RoutineSet[]): LiftAttempt | undefined
       acc.weight = Number(set.weight);
       acc.reps = Number(set.reps!);
       acc.targetReps = Number(set.targetReps ?? set.maxReps ?? set.reps);
-    } else if ((set.weight == currentWeight || !set.weight) && set.reps! > currentReps) {
+    } else if (!set.weight && set.reps! > currentReps) {
       acc.reps = Number(set.reps!);
       acc.targetReps = Number(set.targetReps ?? set.maxReps ?? set.reps);
     }
+
     return acc;
   }, undefined) as LiftAttempt | undefined;
 

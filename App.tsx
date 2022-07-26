@@ -17,6 +17,7 @@ import Settings from './screens/Settings';
 import Vault from './screens/Vault';
 import Log from './screens/Log';
 import Workout from './screens/Workout';
+import { useActiveProgram } from './domain/trainee';
 
 i18n.use(initReactI18next).init({
   resources: {},
@@ -25,7 +26,7 @@ i18n.use(initReactI18next).init({
 });
 
 export default function App() {
-  const activeProgramLoaded = true;
+  const { active, activeProgramLoaded } = useActiveProgram();
 
   return (
     <NativeBaseProvider theme={nativeBaseTheme}>
@@ -34,7 +35,7 @@ export default function App() {
       ) : (
         <Router>
           <Routes>
-            <Route path={Destination.Home} element={<Welcome />} />
+            <Route path={Destination.Home} element={active ? <Dashboard /> : <Welcome />} />
             <Route path={Destination.About} element={<About />} />
             <Route path={Destination.Dashboard} element={<Dashboard />} />
             <Route path={Destination.GetStarted} element={<GetStarted />} />

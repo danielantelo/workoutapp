@@ -3,7 +3,6 @@ import { useStoredReducer, useStoredState } from 'react-native-use-stored-state'
 import { ExperienceLevel, WeekDay } from '../constants';
 import { getProgram } from '../programs';
 import { getTodaysWorkout, ScheduleAction, ScheduledWorkout, scheduleReducer } from './schedule';
-
 import { Trainee } from './trainee';
 
 export type UpdateTraineeFn = <K extends keyof Trainee>(field: K, value: Trainee[K]) => void;

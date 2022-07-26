@@ -5,7 +5,7 @@
   "homepage": "http://danielantelo.github.io/workoutapp/",
   "packageManager": "yarn@3.2.1",
   "engines": {
-    "node": "^16",
+    "node": "^16.16",
     "npm": "please-use-yarn",
     "yarn": ">=3.2"
   },
@@ -21,7 +21,7 @@
     "deploy-web": "expo build:web && gh-pages -d web-build"
   },
   "dependencies": {
-    "expo": "^45.0.5",
+    "expo": "^46.0.1",
     "expo-av": "^11.2.3",
     "gh-pages": "^4.0.0",
     "i18next": "^21.8.14",
